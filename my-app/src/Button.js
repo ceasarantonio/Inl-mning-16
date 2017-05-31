@@ -5,7 +5,12 @@ import './App.css';
 class Button extends Component {
   render(){
     return(
-    <div></div>
+    <div>
+      <button 
+      className="buttonClass"
+      onClick=
+      {this.props.handleClick}>Rensa</button>
+    </div>
     ) 
   }
 }

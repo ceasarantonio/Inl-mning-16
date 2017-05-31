@@ -2,10 +2,18 @@ import App from './App.js';
 import Button from './Button.js';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import ReactDOM from 'react-dom';
+import Form from './Form.js';
 
 describe('Button testing', () => {
 
+  test('Button renders shallow smoke test', () => {
+    shallow(<Button />);
+  })
   
+  test('Button renders deep smoke test', () => {
+    shallow(<Button />).render();
+  })
   
   test('Button click clear state.name', () => {
     let wrapper = mount(<App />);
@@ -31,7 +39,8 @@ describe('Button testing', () => {
   
   test('Has classname', () => {
     let wrapper = shallow(<Button />);
-    let actual = wrapper.
+    let actual = wrapper.find('button').hasClass('buttonClass');
+    expect( actual ).toBe( true );
   })
 
 })

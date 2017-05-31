@@ -1,6 +1,7 @@
 import App from './App.js';
 import Form from './Form.js';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
 
 
@@ -15,18 +16,18 @@ describe("tests", () => {
     shallow(<Form />).render();
   })
   
-  test(`initiale value, state.name=""`, () => {
-  let wrapper = mount(<Form />);
+  test(`initiale value, name`, () => {
+  let wrapper = mount(<App />);
   let actual = wrapper.state('name');
   let expected = '';
-  expect(actual).toBe(expected);
+  expect( actual ).toBe( expected );
   })
 
-  test(`initiale value, state.mail=""`, () => {
-  let wrapper = mount(<Form />);
+  test(`initiale value, mail`, () => {
+  let wrapper = mount(<App />);
   let actual = wrapper.state('mail');
   let expected = '';
-  expect(actual).toBe(expected);
+  expect( actual ).toBe( expected );
   })
 
   test(`input vaule, name`, () => {
@@ -43,7 +44,7 @@ describe("tests", () => {
   })
   
   test(`input value, mail`, () => {
-    const mail = 'd.ca.karlsson@gmail.com';
+    const input = 'd.ca.karlsson@gmail.com';
     let wrapper = mount(<App />);
     wrapper.find('input.mail').simulate('change', {
       target: {
@@ -57,7 +58,7 @@ describe("tests", () => {
   
    test('Contains input element', () => {
     let wrapper = shallow(<Form />);
-    let actual = wrapper.html().indexOf('</input>') > -1;
+    let actual = wrapper.html().indexOf('<input') > -1;
     expect( actual ).toBe( true ); 
   })
   
