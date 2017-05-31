@@ -7,6 +7,14 @@ import { shallow, mount } from 'enzyme';
 
 describe("tests", () => {
 
+    test('Form renders shallow smoke test', () => {
+    shallow(<Form />);
+  })
+  
+  test('Form renders deep smoke test', () => {
+    shallow(<Form />).render();
+  })
+  
   test(`initiale value, state.name=""`, () => {
   let wrapper = mount(<Form />);
   let actual = wrapper.state('name');
@@ -34,7 +42,7 @@ describe("tests", () => {
     expect( actual ).toBe( input )
   })
   
-  test(`input value, mail` () => {
+  test(`input value, mail`, () => {
     const mail = 'd.ca.karlsson@gmail.com';
     let wrapper = mount(<App />);
     wrapper.find('input.mail').simulate('change', {
@@ -46,4 +54,12 @@ describe("tests", () => {
     let actual = wrapper.state('mail');
     expect( actual ).toBe( input )
   })
+  
+   test('Contains input element', () => {
+    let wrapper = shallow(<Form />);
+    let actual = wrapper.html().indexOf('</input>') > -1;
+    expect( actual ).toBe( true ); 
+  })
+  
+  
 })

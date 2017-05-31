@@ -5,6 +5,8 @@ import { shallow, mount } from 'enzyme';
 
 describe('Button testing', () => {
 
+  
+  
   test('Button click clear state.name', () => {
     let wrapper = mount(<App />);
     wrapper.find('button.buttonClass').simulate('click'); 
@@ -19,6 +21,17 @@ describe('Button testing', () => {
     let actual = wrapper.state('mail');
     let expected = '';
     expect( actual ).toBe( expected );
+  })
+  
+  test('Contains button element', () => {
+    let wrapper = shallow(<Button />);
+    let actual = wrapper.html().indexOf('</button>') > -1;
+    expect( actual ).toBe( true ); 
+  })
+  
+  test('Has classname', () => {
+    let wrapper = shallow(<Button />);
+    let actual = wrapper.
   })
 
 })
